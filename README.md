@@ -10,7 +10,7 @@ Data Scientist Nanodegree Project 2
 
 
 ## Installation <a name="Installation"></a>
-The code should run with no issues using Python versions 3.8.8 using Jupyter Notebook server version 6.3.0.  Numpy, Pandas, matplotlib.pyplot, math, seaborn, Datapane and Folium libraries were used
+The code should run with no issues using Python versions 3.8.8 using Jupyter Notebook server version 6.3.0.  Numpy, Pandas, matplotlib.pyplot, math, and seaborn libraries were used
 
 ```python
 
