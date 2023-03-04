@@ -37,5 +37,5 @@ The notebook is exploratory in searching through the data pertaining to the ques
 **_The following questions were answered from the data._**
 
 ## Licensing, Authors, and Acknowledgements<a name="Licensing,-Authors,-and-Acknowledgements"></a>
-. Stack Overflow, Kaggle, Medium and Github were consulted for syntax references.  
+. Stack Overflow, Kaggle, Medium, note.nkmk.me and Github were consulted for syntax references.  
 
