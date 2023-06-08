@@ -45,11 +45,13 @@ def clean_data(df):
     check = categories.columns[~categories.isin([0,1]).all()]
     
     # replace 2 with 1 in related category
-    categories.related.replace(2,1,inplace=True)
+    for column in categories:    
+        if (column == 'related'):
+            categories[column].replace('2', '1')
     
     # check all columns are binary after replace
     check = categories.columns[categories.isin([0,1]).all()] 
-
+    
     # drop the original categories column from `df`
     df.drop('categories', axis=1, inplace=True)
     
@@ -70,7 +72,7 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
-    engine = create_engine('sqlite:///'+ database_filename)
+    engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('DisResPipe', engine, index=False, if_exists='replace') 
     return  
 
