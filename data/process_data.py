@@ -47,7 +47,7 @@ def clean_data(df):
     # replace 2 with 1 in related category
     for column in categories:    
         if (column == 'related'):
-            categories[column].replace('2', '1')
+            categories[column].replace(2, 1, inplace=True)
     
     # check all columns are binary after replace
     check = categories.columns[categories.isin([0,1]).all()] 
