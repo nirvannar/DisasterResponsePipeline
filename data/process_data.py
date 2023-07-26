@@ -1,10 +1,22 @@
-import sys
 # import libraries
+
+import sys
+
 import pandas as pd
 import sqlite3
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    """
+    INPUT:
+    messages_filepath - path to messages.csv
+    categories_filepath -  path to categories.csv 
+    
+    OUTPUT:
+    df - pandas dataframe combined dataset
+    
+    Description: Loads two csv files into dataframes and merges them using common 'id' into a combined dataset df
+    """
     
     # load messages dataset
     messages = pd.read_csv(messages_filepath)
@@ -20,6 +32,15 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    """
+    INPUT:
+    df - pandas dataframe combined dataset
+    
+    OUTPUT:
+    df - pandas dataframe cleaned dataset
+    
+    Description: Cleaning function that loads combined dataset, then splits categories column into separate category columns, then converts       each value to a binary number (0 or 1) in the new columns, then replaces categories column in df with new category columns, and removes       duplicates
+    """
     # create a dataframe of the 36 individual category columns
     categories = df['categories'].str.split(';', expand=True)
     
@@ -29,8 +50,8 @@ def clean_data(df):
     # use this row to extract a list of new column names for categories.
     # one way is to apply a lambda function that takes  everything 
     # up to the second to last character of each string with slicing
-
     category_colnames = list(map(lambda x: x[:-2], row))
+    
     # rename the columns of `categories`
     categories.columns = category_colnames
     
@@ -45,10 +66,12 @@ def clean_data(df):
     check = categories.columns[~categories.isin([0,1]).all()]
     
     # replace 2 with 1 in related category
+
     for column in categories:    
         if (column == 'related'):
             categories[column].replace(2, 1, inplace=True)
     
+
     # check all columns are binary after replace
     check = categories.columns[categories.isin([0,1]).all()] 
     
@@ -63,6 +86,7 @@ def clean_data(df):
    
     # drop duplicates
     df.drop_duplicates(inplace=True)
+    
     # check number of duplicates
     df.duplicated().sum()
     
@@ -72,9 +96,20 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    """
+    INPUT:
+    df - clean dataset
+    database_filename -  filename for storing sqlite database
+    
+    OUTPUT:
+    db - sqlite database to save clean data to
+    
+    Description: Saves df clean dataset into an sqlite database using to_sql method
+    """
     engine = create_engine('sqlite:///{}'.format(database_filename))
     df.to_sql('DisResPipe', engine, index=False, if_exists='replace') 
     return  
+  
 
 
 def main():
