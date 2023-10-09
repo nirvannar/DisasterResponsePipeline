@@ -1,5 +1,6 @@
 # Disaster Response Pipeline Project
-My first Udacity Project based on CRISP-DM to assist volcano tourists to plan their travels.
+My second Udacity Project creates a machine learning pipeline to categorize disaster events so that the messages can be sent to the appropriate disaster relief agencies
+
 # Table of Contents
 
 * [Installation](#Installation)
@@ -19,7 +20,7 @@ pip install -U datapane
 ```
 
 ## Project Motivation <a name="Project-Motivation"></a>
-For this project, I was interestested in using the characteristcs of Holocene volcanoes for the purpose of Volcano tourism.  A data science approach was taken using the CRISP-DM process.  A combination of the characteristics and the tourists location and base and appetite for distance travel will allow the traveller to use a combination of analyses to pick the locations for leisure travel purposes.  
+For this project, I used data set containing real messages that were sent during disaster events.    A combination of the characteristics and the tourists location and base and appetite for distance travel will allow the traveller to use a combination of analyses to pick the locations for leisure travel purposes.  
 
 **_Business Problem Understanding_**
  
@@ -89,5 +90,5 @@ print(df[df['distance']==df['distance'].min()])
 [A Medium blog](https://medium.com/@nirvannsramp/intrepid-explosive-voyages-77f23e47e24e?source=friends_link&sk=b97c94187c9f435b0b955aa12acc408d) was created using the results. 
 
 ## Licensing, Authors, and Acknowledgements<a name="Licensing,-Authors,-and-Acknowledgements"></a>
-The data was provided by [Appen] (https://appen.com/) (formally Figure 8). Stack Overflow, Kaggle, Medium and Github were consulted for syntax references.  
-The Volcano marker used in the Folium map was created by Joris Hoogendoorn from the Noun Project
+The data was provided by [Appen](https://appen.com/) (formally Figure 8). Scikit-learn.org, Stack Overflow, [Plotly](https://plotly.com/graphing-libraries/), Udacity, Kaggle, Medium, [Geeks for Geeks](https://www.geeksforgeeks.org/) and Github were consulted for this project.  
+
