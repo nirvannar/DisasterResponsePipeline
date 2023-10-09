@@ -89,5 +89,5 @@ print(df[df['distance']==df['distance'].min()])
 [A Medium blog](https://medium.com/@nirvannsramp/intrepid-explosive-voyages-77f23e47e24e?source=friends_link&sk=b97c94187c9f435b0b955aa12acc408d) was created using the results. 
 
 ## Licensing, Authors, and Acknowledgements<a name="Licensing,-Authors,-and-Acknowledgements"></a>
-The data was provided by Appen [https://appen.com/] (formally Figure 8). Stack Overflow, Kaggle, Medium and Github were consulted for syntax references.  
+The data was provided by [Appen] (https://appen.com/) (formally Figure 8). Stack Overflow, Kaggle, Medium and Github were consulted for syntax references.  
 The Volcano marker used in the Folium map was created by Joris Hoogendoorn from the Noun Project
