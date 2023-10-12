@@ -24,9 +24,9 @@ For this project, I used a data set containing real messages that were sent duri
 
 **_Business Problem Understanding_**
  
-**_Question 1_** *How can I identify potential travel destinations for enthusiasts of volcano tourism?*  
-**_Question 2_** *How can I customise the travel destination for those tourists with no travel restriction?*  
-**_Question 3_** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
+**_ETL Pipeline_** *How can I identify potential travel destinations for enthusiasts of volcano tourism?*  
+**_Machine Learning Pipeline_** *How can I customise the travel destination for those tourists with no travel restriction?*  
+**_Flask Web App Deployment_** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
 
 
 
@@ -47,16 +47,16 @@ The Primary Volcano Types which was renamed to Types was manipulated to reflect 
 
 ## Results <a name="Results"></a>
 
-**Question 1** *How can I identify potential travel destinations for enthusiasts of volcano tourism?*  
+**ETL Pipeline** *How can I identify potential travel destinations for enthusiasts of volcano tourism?*  
 
 *This was answered firstly via using Folium and datapane with volcano markers to the world map.*  
 A person could chose to refine the travel destination by the most common type of volcano and/or by the country with the most volcanoes and/or Region and/or Elevation above sea level.  To summarise a traveler could choose one or a combination of the Holocene characteristics, or choose the highest or lowest elevation, or simply look at the interactive map to target where to start their travel search.  
 
-**Question 2** *How can I customise the travel destination for those tourists with no travel restriction?*  
+**Machine Learning Pipeline** *How can I customise the travel destination for those tourists with no travel restriction?*  
 Travel restrictions exist in terms of visa regulations, COVID_19 entry requirements and lockdown levels, availability of international and regional flights, etc. Question 2 was answered by using the results of Question 1 as inputs. A combination of characteristics indicates that Chile had the highest volcanoes in terms of Elevation and 69% (66 of 96) were stratovolcanoes (which is the most common primary type of volcano). In addition Chile is in the Region with the must volcanoes which is South America, and is number 5 on the list of countries with the most volcanoes. In addition *San Pedro de Atacama* is one of the most visited places in Chile's *Atacama* desert.
 The Haversine formula was then used to calculate the distances between 2 sets of latitude and longitude points. This distance was calculated from San Pedro de Atacama, to other volcanic locations via a for loop. The closest distance was then calculated using dataframe.min(). This resulted in the selection of *Licancabur*. The closest volcano which had erupted in the last 5 years (2017) was *Lascar* which is at an elevation of 5592m and 70.2km away from San Pedro de Atacama.
 
-**Question 3** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
+**Flask Web App Deployment** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
 The interactive map shows the closest volcanos in the area around South Africa. The Haversine formula was used to calculate the distances from OR Tambo International Airport (in Johannesburg), to other volcanic locations via a for loop. The closest volcano to Johannesburg is the Stratovolcano *Kyejo* in Tanzania.  
 The closest active volcanic island was found using a combination of characteristics including elevation from sea level (0m) to 3000m, eruption in 2021, located in the Indian Ocean and within 3000km away from Johannesburg resulted in selecting the shield volcano *Piton de la Fournaise*.
 
