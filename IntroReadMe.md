@@ -20,7 +20,7 @@ pip install -U datapane
 ```
 
 ## Project Motivation <a name="Project-Motivation"></a>
-For this project, I used data set containing real messages that were sent during disaster events.    A combination of the characteristics and the tourists location and base and appetite for distance travel will allow the traveller to use a combination of analyses to pick the locations for leisure travel purposes.  
+For this project, I used a data set containing real messages that were sent during disaster events.    Different visualisations and analyses of data can assist disaster relief organizations such as [The Red Cross](https://www.redcross.org/about-us/our-work/international-services/international-disasters-and-crises.html), [The International Rescue Committee](https://www.rescue.org/) and [the United Nations Office for the Coordination of Humanitarian Affairs](https://www.unocha.org/)
 
 **_Business Problem Understanding_**
  
