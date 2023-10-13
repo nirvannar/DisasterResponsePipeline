@@ -1,5 +1,5 @@
 # Disaster Response Pipeline Project
-My second Udacity Project creates a machine learning pipeline to categorize disaster events so that the messages can be viewed by abd sent to the appropriate disaster relief agencies
+My second Udacity Project creates a machine learning pipeline to categorize disaster events so that the messages can be viewed by emergency workersabd sent to the appropriate disaster relief agencies
 
 # Table of Contents
 
@@ -11,7 +11,7 @@ My second Udacity Project creates a machine learning pipeline to categorize disa
 
 
 ## Installation <a name="Installation"></a>
-The code should run with no issues using Python version 3.6.3 using Jupyter Notebook server version 5.7.0 in the Udacity Project Workspace.  Packages that were imported include NumPy, Pandas, matplotlib.pyplot,  were used.  
+The code should run with no issues using Python version 3.6.3 using Jupyter Notebook server version 5.7.0 in the Udacity Project Workspace.  Packages that were imported include Pandas,sqlite3, sqlalchemy create_engine, NumPy,  matplotlib.pyplot,  were used.  
 
   
 
@@ -37,8 +37,8 @@ Below are a few screenshots of the web app.
 
 
 ## File Descriptions and Analyses <a name="File-Descriptions-and-Analyses"></a>
-**_Data Understanding_**
-I was interestested in using Smithsonian Institution data from the Global Volcanism Program entitled Volcanoes of the World 4.10.1, downloaded on 24 Jul 2021 at 11:16 AM	as a .csv file to use characteristcs of Holocene volcanoes for the purpose of Volcano tourism. 
+**_ETL Pipeline Preparation_**
+Two datasets ```messages.csv``` and ```categories.csv``` containing real messages that were sent during disaster events.  These were merged using the common ```'id'```and this combined dataset was assigned to ```df```which was then cleaned.
 
 The .csv file was analysed using a Jupyter Notebook.  There is one notebook available here to showcase work related to the above questions. The notebook is exploratory in searching through the data pertaining to the questions showcased by the notebook title. Markdown cells were used to assist in walking through the thought process for individual steps.  The notebook had 1398 rows of data and 4 columns of quantitative variables.  The total columns were 14 namely Volcano Number,	Volcano Name,	Country,	Primary Volcano Type,	Activity Evidence,	Last Known Eruption,	Region,	Subregion,	Latitude,	Longitude, 	Elevation (m),	Dominant Rock Type and	Tectonic Setting.   The columns of data "Dominant Rock Type" and "Tectonic Setting" contained blanks.  However these 2 columns were not used to obtain results and are excluded from any analysis.  
 
@@ -67,7 +67,7 @@ Type in the command line as below to run the Flask app.
 
 ```python
 python run.py
-```*Piton de la Fournaise*.
+```
 
 ```python
 # Closest Volcano to Johannesburg
@@ -99,5 +99,5 @@ print(df[df['distance']==df['distance'].min()])
 [A Medium blog](https://medium.com/@nirvannsramp/intrepid-explosive-voyages-77f23e47e24e?source=friends_link&sk=b97c94187c9f435b0b955aa12acc408d) was created using the results. 
 
 ## Licensing, Authors, and Acknowledgements<a name="Licensing,-Authors,-and-Acknowledgements"></a>
-The data was provided by [Appen](https://appen.com/) (formally Figure 8). Scikit-learn.org, Stack Overflow, [Plotly](https://plotly.com/graphing-libraries/), Udacity, Kaggle, Medium, [Geeks for Geeks](https://www.geeksforgeeks.org/) and Github were consulted for this project.  
+The data was provided by [Appen](https://appen.com/) (formally Figure 8). Scikit-learn.org, Stack Overflow, [Plotly](https://plotly.com/graphing-libraries/), Udacity, Kaggle, Medium,[freeCodeCamp](https://www.freecodecamp.org/news/how-to-sort-values-in-pandas/), [Geeks for Geeks](https://www.geeksforgeeks.org/) and Github were consulted for this project.  
 
