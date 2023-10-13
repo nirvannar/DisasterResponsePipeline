@@ -1,5 +1,5 @@
 # Disaster Response Pipeline Project
-My second Udacity Project creates a machine learning pipeline to categorize disaster events so that the messages can be sent to the appropriate disaster relief agencies
+My second Udacity Project creates a machine learning pipeline to categorize disaster events so that the messages can be viewed by abd sent to the appropriate disaster relief agencies
 
 # Table of Contents
 
@@ -11,16 +11,14 @@ My second Udacity Project creates a machine learning pipeline to categorize disa
 
 
 ## Installation <a name="Installation"></a>
-The code should run with no issues using Python versions 3.8.8 using Jupyter Notebook server version 6.3.0.  Numpy, Pandas, matplotlib.pyplot, math, seaborn, wordcount, Datapane and Folium libraries were used.  A datapane account must be created and then the API token created and viewed at https://datapane.com/settings/  
+The code should run with no issues using Python version 3.6.3 using Jupyter Notebook server version 5.7.0 in the Udacity Project Workspace.  Packages that were imported include NumPy, Pandas, matplotlib.pyplot,  were used.  
 
-Datapane must then be installed as below
+  
 
-```python
-pip install -U datapane
-```
+
 
 ## Project Motivation <a name="Project-Motivation"></a>
-For this project, I used a data set containing real messages that were sent during disaster events.    Different visualisations and analyses of data can assist disaster relief organizations such as [The Red Cross](https://www.redcross.org/about-us/our-work/international-services/international-disasters-and-crises.html), [The International Rescue Committee](https://www.rescue.org/) and [the United Nations Office for the Coordination of Humanitarian Affairs](https://www.unocha.org/)
+For this project, I used a data set containing real messages that were sent during previous disaster events.    Different visualisations and analyses of data can assist disaster relief organizations such as [The Red Cross](https://www.redcross.org/about-us/our-work/international-services/international-disasters-and-crises.html), [The International Rescue Committee](https://www.rescue.org/) and [the United Nations Office for the Coordination of Humanitarian Affairs](https://www.unocha.org/)
 
 In this course, you've learned and built on your data engineering skills to expand your opportunities and potential as a data scientist. In this project, you'll apply these skills to analyze disaster data from Appen (formally Figure 8) to build a model for an API that classifies disaster messages.
 
@@ -30,10 +28,10 @@ Your project will include a web app where an emergency worker can input a new me
 
 Below are a few screenshots of the web app.
 
-**_Business Problem Understanding_**
+**_Project Components_**
  
-**_ETL Pipeline_** *How can I identify potential travel destinations for enthusiasts of volcano tourism?*  
-**_Machine Learning Pipeline_** *How can I customise the travel destination for those tourists with no travel restriction?*  
+**_ETL Pipeline_** *The Extract, Transform, and Load process reads the dataset, cleans the data, and then store it in a SQLite database.*  
+**_Machine Learning Pipeline_** *Hplit the data into a training set and a test set. Then, you will create a machine learning pipeline that uses NLTK, as well as scikit-learn's Pipeline and GridSearchCV to output a final model that uses the message column to predict classifications for 36 categories (multi-output classification). Finally, you will export your model to a pickle file. After completing the notebook, you'll need to include your final machine learning code in train_classifier.py.*  
 **_Flask Web App Deployment_** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
 
 
@@ -65,8 +63,11 @@ Travel restrictions exist in terms of visa regulations, COVID_19 entry requireme
 The Haversine formula was then used to calculate the distances between 2 sets of latitude and longitude points. This distance was calculated from San Pedro de Atacama, to other volcanic locations via a for loop. The closest distance was then calculated using dataframe.min(). This resulted in the selection of *Licancabur*. The closest volcano which had erupted in the last 5 years (2017) was *Lascar* which is at an elevation of 5592m and 70.2km away from San Pedro de Atacama.
 
 **Flask Web App Deployment** *How can I find the closest volcano and the closest most recently active volcanic island tour for tourists from South Africa?*  
-The interactive map shows the closest volcanos in the area around South Africa. The Haversine formula was used to calculate the distances from OR Tambo International Airport (in Johannesburg), to other volcanic locations via a for loop. The closest volcano to Johannesburg is the Stratovolcano *Kyejo* in Tanzania.  
-The closest active volcanic island was found using a combination of characteristics including elevation from sea level (0m) to 3000m, eruption in 2021, located in the Indian Ocean and within 3000km away from Johannesburg resulted in selecting the shield volcano *Piton de la Fournaise*.
+Type in the command line as below to run the Flask app.
+
+```python
+python run.py
+```*Piton de la Fournaise*.
 
 ```python
 # Closest Volcano to Johannesburg
