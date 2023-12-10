@@ -28,12 +28,13 @@ A machine learning pipeline was created to categorize these events so that the m
 
 ## File Descriptions and Analyses <a name="File-Descriptions-and-Analyses"></a>
 **_ETL Pipeline Preparation_**
-Two datasets ```messages.csv``` and ```categories.csv``` containing real messages that were sent during disaster events were merged using the common ```'id'```.  This combined dataset was assigned to ```df```which was then cleaned. Finally it was stored in a SQLite database ```DisResPipe.db``` using the pandas dataframe ```.to_sql()``` method.
+Two datasets ```messages.csv``` and ```categories.csv``` containing real messages that were sent during disaster events were merged using the common ```'id'```.  This combined dataset was assigned to ```df```which was then cleaned. The cateories were split into separate category columns on ```;``` with ```expand=True``` on split function which uses strings.  A lambda function was then used to take everything 
+up to the second to last character of each string with slicing to get the 36 category columns titles.  Then to convert category values to just numbers 0 or 1, ```astype(str)``` then ```astype(int)```were applied to the last character of the string.  The columns were then the checked for binary and any'2' was replaced by '1'.  The categories column was replaced in df with new category columns by using ```drop```and ```concat```.  Duplicates were removed using ```drop_duplicates```.  Finally it was stored in a SQLite database ```DisasterResponse.db``` using the pandas dataframe ```.to_sql()``` method.
 
 
 
 **_ML Data Preparation_**  
-The data was split into a training set and a test set. A machine learning pipeline was created that used NLTK, as well as scikit-learn's Pipeline and GridSearchCV to output a final model that uses the message column to predict classifications for 36 categories (multi-output classification). The model was exported to a pickle file ```classifier,pkl```. The final machine learning code in ```train_classifier.py```.
+The was loaded. A machine learning pipeline was created that used NLTK, Pipeline and GridSearchCV to output a final model that uses the message column to predict classifications for 36 categories (multi-output classification). The data was split into a training set and a test set, trained and tested.  The model was exported to a pickle file ```classifier,pkl```. The final machine learning code was in the script ```train_classifier.py```.
 
 
 ## Results <a name="Results"></a>
@@ -41,7 +42,9 @@ The data was split into a training set and a test set. A machine learning pipeli
 **ETL Pipeline** *Python ETL script ```process_data.py``` which contained the data cleaning code ran in the terminal without errors.*  
 
 
-**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py```, runs in the terminal without errors*  
+**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py```, ran in the terminal without errors. The precision, recall and f1 score for each output category of the dataset was reported using ```classification_report```. The higher the scores the better the model.  Scores were 0.74, 0.44 and 0.50 respectively.  After using GridSearchCV to find better parameters, Scores were 0.74, 0.49 and 0.53 respectively.  This dataset is imbalanced as some labels like water, child_alone, fire and cold have few examples, while related has many examples and fi-score of 0.88. The top 5 categories have high f1-scores.  However in the case where there are few examples of labels, the ML model will not be reflective of all labels and not as accurate as required.  To evaluate how well the model deals with identifying and predicting True Positives, we should measure precision and recall. The F-score is the harmonic mean of a system's precision and recall values.  A low F1 score is an indication of both poor precision and poor recall as can be illustrated by the scores of category labels with few examples.  Practically the dataset needs to be bigger and encompass more examples of each category. In a real life situation this may lead to the aid being dispatched to where it is not needed thereby wasting resources (False Positive) reflected in precision, or even worse it may not get to the intended people requiring aid (False Negative) reflected in recall.*  
+
+![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/2367181f-cbaa-417e-832b-a0bf040b7381)
 
 
 **Flask Web App Deployment** *The web app ran without errors. When a user inputs a message into the app, the app returns classification results for all 36 categories as shown in the screenshots below.*  
@@ -55,11 +58,12 @@ python run.py
 
 ![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/1f5b13a0-9d57-44cc-8b6f-c0db43e7be5e)
 ![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/36987932-4d63-42fc-a5f9-7209ed944b02)
+
 ![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/1dff5d30-c10e-4b01-9582-2061d859d642)
 
 The MLP visualisations and analyses of data suggested that messages could go to disaster relief organizations such as [The Red Cross](https://www.redcross.org/about-us/our-work/international-services/international-disasters-and-crises.html), [The International Rescue Committee](https://www.rescue.org/) and [the United Nations Office for the Coordination of Humanitarian Affairs](https://www.unocha.org/).
 
-This dataset is imbalanced (ie some labels like water have few examples). In your README, discuss how this imbalance, how that affects training the model, and your thoughts about emphasizing precision or recall for the various categories.
+
 
 
 ## Licensing, Authors, and Acknowledgements <a name="Licensing,-Authors,-and-Acknowledgements"></a>
