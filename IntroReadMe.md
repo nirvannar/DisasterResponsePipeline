@@ -34,7 +34,7 @@ up to the second to last character of each string with slicing to get the 36 cat
 
 
 **_ML Data Preparation_**  
-The was loaded. A machine learning pipeline was created that used NLTK, Pipeline and GridSearchCV to output a final model that uses the message column to predict classifications for 36 categories (multi-output classification). The data was split into a training set and a test set, trained and tested.  The model was exported to a pickle file ```classifier,pkl```. The final machine learning code was in the script ```train_classifier.py```.
+The SQLite database was loaded. A machine learning pipeline (MLP) was created that used NLTK, Pipeline and GridSearchCV to output a final model that uses the message column to predict classifications for 36 categories (multi-output classification). The data was split into a training set and a test set, trained and tested.  The model was exported to a pickle file ```classifier,pkl```. The final machine learning code was in the script ```train_classifier.py```. The script used a tokenize function using NLTK to case normalize, lemmatize, and tokenize text.  The function wass used in the MLP to vectorize and then apply TF-IDF to the text. ```MultiOutputClassifier(RandomForestClassifier())``` was also used for predicting multiple target variables.
 
 
 ## Results <a name="Results"></a>
@@ -46,11 +46,11 @@ To run ETL pipeline that cleans data and python models/train_classifier.py data/
 
 
 
-**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py``` ran in the project workspace and terminal without errors. The precision, recall and f1 score for each output category of the dataset was reported using ```classification_report```. The higher the scores the better the model.  Scores were 0.74, 0.44 and 0.50 respectively.  
+**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py``` ran in the project workspace and terminal without errors. The precision, recall and f1-score for each output category of the dataset was reported using ```classification_report```. The higher the scores the better the model.  Scores were 0.74, 0.44 and 0.50 respectively.  
 
 After using GridSearchCV to find better parameters, scores were 0.74, 0.49 and 0.53 respectively in the project workspace.  The IDE scores were 0.76, 0.49 and 0.53 respectively for the same exercise. 
 
-This dataset is imbalanced as some labels like water, child_alone, fire and cold have few examples, while related has many examples and fi-score of 0.88. The top 5 categories have high f1-scores.  However in the case where there are few examples of labels, the ML model will not be reflective of all labels and not as accurate as required.  To evaluate how well the model deals with identifying and predicting True Positives, we should measure precision and recall. The F-score is the harmonic mean of a system's precision and recall values.  A low F1 score is an indication of both poor precision and poor recall as can be illustrated by the scores of category labels with few examples.  Practically the dataset needs to be bigger and encompass more examples of each category. In a real life situation this may lead to the aid being dispatched to where it is not needed thereby wasting resources (False Positive) reflected in precision, or even worse it may not get to the intended people requiring aid (False Negative) reflected in recall.*  
+This dataset is imbalanced as shown on the web app visualisations below, as some labels like water, child_alone, fire and cold have few examples with f1-scores of zero, while related has many examples and fi-score of 0.88. The top 5 categories have high f1-scores.  However in the case where there are few examples of labels, the ML model will not be reflective of all labels and not as accurate as required.  To evaluate how well the model deals with identifying and predicting True Positives, we should measure precision and recall. The F-score is the harmonic mean of a system's precision and recall values.  A low F1 score is an indication of both poor precision and poor recall as can be illustrated by the scores of category labels with few examples such as offer, missing_people and fire which all had scores of zero for precision, recall and f1-score.  Practically the dataset needs to be bigger and encompass more examples of each category. In a real life situation this may lead to the aid being dispatched to where it is not needed thereby wasting resources (False Positive) reflected in precision, or even worse it may not get to the intended people requiring aid (False Negative) reflected in recall because the model was not trained in those examples adequately.*  
 
 *To run ML pipeline that trains classifier and saves*
         ```python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl``` 
@@ -84,5 +84,5 @@ The MLP visualisations and analyses of data suggested that messages could go to 
 
 
 ## Licensing, Authors, and Acknowledgements <a name="Licensing,-Authors,-and-Acknowledgements"></a>
-The data was provided by [Appen](https://appen.com/). [Scikit-learn.org](https://scikit-learn.org/), [Stack Overflow](https://stackoverflow.com/), [Plotly](https://plotly.com/graphing-libraries/), Udacity, Kaggle, Medium,[freeCodeCamp](https://www.freecodecamp.org/news/how-to-sort-values-in-pandas/), [Geeks for Geeks](https://www.geeksforgeeks.org/) and Github were consulted for this project.  
+The data was provided by [Appen](https://appen.com/).  [Scikit-learn.org](https://scikit-learn.org/), [Stack Overflow](https://stackoverflow.com/), [Plotly](https://plotly.com/graphing-libraries/), [Udacity](https://knowledge.udacity.com/?nanodegree=nd025&page=1&project=516&rubric=1565), [freeCodeCamp](https://www.freecodecamp.org/news/how-to-sort-values-in-pandas/), [Geeks for Geeks](https://www.geeksforgeeks.org/) and [Github](https://github.com/) were consulted for this project.  
 
