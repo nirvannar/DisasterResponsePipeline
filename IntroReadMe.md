@@ -39,15 +39,32 @@ The was loaded. A machine learning pipeline was created that used NLTK, Pipeline
 
 ## Results <a name="Results"></a>
 
-**ETL Pipeline** *Python ETL script ```process_data.py``` which contained the data cleaning code ran in the terminal without errors.*  
+**ETL Pipeline** *Python ETL script ```process_data.py``` which contained the data cleaning code ran in the project workspace and the terminal without errors.
+To run ETL pipeline that cleans data and python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl stores in database*
+        ```python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db```
+![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/a5e47eec-3b28-4641-882f-9ff3b241b5b3)
 
 
-**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py```, ran in the terminal without errors. The precision, recall and f1 score for each output category of the dataset was reported using ```classification_report```. The higher the scores the better the model.  Scores were 0.74, 0.44 and 0.50 respectively.  After using GridSearchCV to find better parameters, Scores were 0.74, 0.49 and 0.53 respectively.  This dataset is imbalanced as some labels like water, child_alone, fire and cold have few examples, while related has many examples and fi-score of 0.88. The top 5 categories have high f1-scores.  However in the case where there are few examples of labels, the ML model will not be reflective of all labels and not as accurate as required.  To evaluate how well the model deals with identifying and predicting True Positives, we should measure precision and recall. The F-score is the harmonic mean of a system's precision and recall values.  A low F1 score is an indication of both poor precision and poor recall as can be illustrated by the scores of category labels with few examples.  Practically the dataset needs to be bigger and encompass more examples of each category. In a real life situation this may lead to the aid being dispatched to where it is not needed thereby wasting resources (False Positive) reflected in precision, or even worse it may not get to the intended people requiring aid (False Negative) reflected in recall.*  
+
+**Machine Learning Pipeline** *The machine learning script, ```train_classifier.py``` ran in the project workspace and terminal without errors. The precision, recall and f1 score for each output category of the dataset was reported using ```classification_report```. The higher the scores the better the model.  Scores were 0.74, 0.44 and 0.50 respectively.  
+
+After using GridSearchCV to find better parameters, scores were 0.74, 0.49 and 0.53 respectively in the project workspace.  The IDE scores were 0.76, 0.49 and 0.53 respectively for the same exercise. 
+
+This dataset is imbalanced as some labels like water, child_alone, fire and cold have few examples, while related has many examples and fi-score of 0.88. The top 5 categories have high f1-scores.  However in the case where there are few examples of labels, the ML model will not be reflective of all labels and not as accurate as required.  To evaluate how well the model deals with identifying and predicting True Positives, we should measure precision and recall. The F-score is the harmonic mean of a system's precision and recall values.  A low F1 score is an indication of both poor precision and poor recall as can be illustrated by the scores of category labels with few examples.  Practically the dataset needs to be bigger and encompass more examples of each category. In a real life situation this may lead to the aid being dispatched to where it is not needed thereby wasting resources (False Positive) reflected in precision, or even worse it may not get to the intended people requiring aid (False Negative) reflected in recall.*  
+
+*To run ML pipeline that trains classifier and saves*
+        ```python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl``` 
 
 ![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/2367181f-cbaa-417e-832b-a0bf040b7381)
+![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/076d47f3-cdbb-49da-9f8f-02a572c70b7a)
+![image](https://github.com/nirvannar/DisasterResponsePipeline/assets/52913504/f903dfcf-514d-4496-a2bb-e74e7a29c15a)
 
 
 **Flask Web App Deployment** *The web app ran without errors. When a user inputs a message into the app, the app returns classification results for all 36 categories as shown in the screenshots below.*  
+
+
+
+
 Type in the command line Project Workspace IDE as below to run the Flask app.
 
 ```python
